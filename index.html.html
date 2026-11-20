@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>صيدلي تحت الضغط 😂💊</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fdf6e3;--wall:#e4f3ea;--ink:#1f2d2a;--card:#fff;--line:#d9cdb4;--g:#0e9f6e;--g2:#067a55;--wood:#b9824b;--wood2:#8a5a2b;--bad:#d64545;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14201d;--wall:#1b2c27;--ink:#eaf3ef;--card:#243832;--line:#3b524a;--wood:#8d6238;--wood2:#6a4423}}
+:root[data-theme="dark"]{--bg:#14201d;--wall:#1b2c27;--ink:#eaf3ef;--card:#243832;--line:#3b524a;--wood:#8d6238;--wood2:#6a4423}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,Tahoma,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:var(--g2)}
+[hidden]{display:none!important}
+button{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:8px 14px;background:var(--g);color:#fff;font-weight:700;min-height:44px}
+button.alt{background:var(--card);color:var(--ink);border:2px solid var(--line)}
+button.red{background:var(--bad)}
+.screen{max-width:700px;margin:0 auto;padding:16px;text-align:center}
+.screen h1{font-size:2.3rem;margin:.1em 0;color:var(--g)}
+.big{font-size:3.5rem}.tag{font-weight:700}
+.modes{display:grid;gap:10px;margin:16px 0}.modes button{font-size:1.1rem;padding:14px}
+small{font-weight:400;opacity:.8}.modes small{display:block}
+.hint{font-size:.78rem;opacity:.75;margin:4px 0}
+#intro{position:fixed;inset:0;z-index:80;background:var(--g2);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:1.7rem;font-weight:900;text-align:center;animation:fo .6s 2.2s forwards}
+@keyframes fo{to{opacity:0;visibility:hidden}}
+#hud{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;display:flex;justify-content:space-between;align-items:center;gap:6px;background:var(--g2);color:#fff;padding:4px 10px;font-size:.82rem;font-weight:700}
+#hs{display:flex;gap:12px}#hud button{min-height:34px;padding:0 10px}
+#scene{max-width:700px;margin:0 auto;position:relative;background:var(--wall);overflow:hidden}
+.sign{background:var(--g);color:#fff;text-align:center;font-weight:900;padding:6px;font-size:1.05rem;border-bottom:4px solid var(--g2)}
+.shelf{padding:2px 8px 0}.shelf h4{margin:3px 0 2px;font-size:.7rem;opacity:.7}
+.row{display:flex;gap:6px;flex-wrap:wrap;border-bottom:8px solid var(--wood);padding-bottom:3px;min-height:76px}
+.box{width:58px;height:68px;background:#fff;color:#222;border-radius:4px;border-top:12px solid var(--c);text-align:center;font-size:9px;line-height:1.15;padding:2px;touch-action:none;user-select:none;cursor:grab;box-shadow:0 2px 3px #0005;direction:ltr}
+.box b{display:block;font-size:10px}
+.ghost{position:fixed;z-index:90;pointer-events:none;transform:rotate(-6deg) scale(1.15)}
+#cnt{display:grid;grid-template-columns:96px 1fr;gap:8px;padding:8px;min-height:190px;border-top:10px solid var(--wood2);background:linear-gradient(var(--wall) 50%,var(--wood) 50%)}
+#pt{text-align:center;overflow:hidden}
+#face{font-size:60px;line-height:1.1;transform:translateX(-180%);transition:transform .9s}
+#face.in{transform:none;animation:bob 1s infinite alternate}#face.out{transform:translateX(-180%)}
+@keyframes bob{to{margin-top:-5px}}
+#nm{font-size:.72rem;font-weight:900}
+#pat{height:8px;background:#0003;border-radius:6px;overflow:hidden;margin-top:3px}#pat i{display:block;height:100%;width:100%;background:var(--g)}
+#bub{background:#fff;color:#222;border-radius:14px;padding:7px 10px;font-size:.88rem;font-weight:700;min-height:44px;margin-bottom:6px}
+.cr{display:flex;gap:8px}
+#rx{width:84px;background:#fffdf0;color:#333;border-radius:8px;padding:6px;text-align:center;font-weight:700;font-size:.8rem;cursor:pointer;box-shadow:0 2px 4px #0005;transform:rotate(3deg)}
+#bag{flex:1;border:3px dashed #fff9;border-radius:12px;background:#0002;padding:6px;color:#fff;min-height:84px;font-size:.8rem}
+#bag.over{background:#fff4;border-color:#fff}#bag ul{margin:2px 0;padding:0 14px}#bag li{cursor:pointer}
+#ev{max-width:700px;margin:0 auto;display:none;gap:8px;align-items:center;justify-content:space-between;background:var(--bad);color:#fff;padding:8px 12px;font-weight:700;font-size:.9rem}
+#ev button{background:#fff;color:#222;min-height:36px}
+#dk{position:absolute;inset:0;z-index:14;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(circle 80px at var(--x,50%) var(--y,50%),transparent 0,#0008 100%)}#dk.on{opacity:1}
+#toast{position:absolute;left:8px;right:8px;bottom:6px;z-index:20;padding:8px;border-radius:10px;background:var(--g2);color:#fff;font-weight:700;text-align:center;opacity:0;transition:.3s;pointer-events:none;font-size:.88rem}
+#toast.on{opacity:1}#toast.b{background:var(--bad)}
+#pan{max-width:700px;margin:0 auto;padding:10px 10px 70px;background:var(--card);border-top:3px solid var(--line);min-height:130px}
+#pan button{margin:3px 2px}.ch button{display:block;width:100%;text-align:right}
+.h{font-weight:900}.rc{background:var(--bg);border-radius:8px;padding:6px;font-size:.85rem}.rc div{display:flex;justify-content:space-between}
+.scr{background:#111;color:#7cfc9a;font:900 1.5rem monospace;padding:4px 10px;border-radius:8px;direction:ltr;text-align:left;margin:6px 0}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+#mini{position:fixed;left:0;right:0;bottom:0;z-index:55;display:none;align-items:center;justify-content:space-between;gap:8px;background:var(--wood2);color:#fff;padding:6px 12px calc(6px + env(safe-area-inset-bottom,0px));font-weight:700;font-size:.85rem;border-top:3px dashed #fff8}#mini.on{display:flex}#mini.over{background:var(--g2)}#mini button{min-height:38px;padding:4px 12px}
+#md{position:fixed;inset:0;z-index:75;background:#000b;display:none;align-items:center;justify-content:center;padding:14px}#md.on{display:flex}
+#mb{background:var(--card);border-radius:16px;padding:16px;max-width:460px;width:100%;max-height:88vh;overflow:auto}#mb h3{margin-top:0}
+.pz{height:210px;overflow:auto;border:2px solid var(--line);border-radius:8px;background:#fffdf0}
+.paper{color:#223;padding:12px;font-family:"Segoe Script","Bradley Hand","Comic Sans MS",cursive;direction:ltr;text-align:left;font-size:calc(14px*var(--z));width:max-content;min-width:100%}
+.ln{margin:8px 0;transform:rotate(-1.5deg)}.ln.u:not(.ok){filter:blur(calc(5px/var(--z)));letter-spacing:2px}
+.pl{background:#fff4c2;color:#3d3000;border-radius:10px;padding:8px 10px;margin:8px 0;font-weight:700;font-size:.88rem;border-right:5px solid #f1c40f}
+.st{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.st div{background:var(--card);border-radius:10px;padding:8px;font-weight:700}.st b{display:block;font-size:1.3rem;color:var(--g)}
+</style>
+</head>
+<body>
+<div id="intro"><div class="big">🏪💊</div>مبروك يا دكتور سيد…<br>استلمت شيفت صيدلية دكتور سيد إسماعيل! 🎉</div>
+<div id="menu" class="screen">
+<div class="big">💊🇪🇬</div><h1>صيدلي تحت الضغط</h1><p class="h" style="font-size:1.2rem"><img class="dri" src="" style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:3px solid var(--g);vertical-align:middle"> صيدلية دكتور سيد إسماعيل</p>
+<p class="tag">“مش كل اللي داخل الصيدلية جاي يشتري دوا… بعضهم جاي يختبر صبرك!”</p>
+<div class="modes">
+<button onclick="start('n')">🟢 شيفت عادي<small>٥ مرضى، بالراحة</small></button>
+<button onclick="start('r')">🟠 ساعة الزحمة<small>٦ مرضى، صبرهم أقل</small></button>
+<button onclick="start('k')">🔴 شيفت الكابوس<small>٨ مرضى، أصعب شيفت في تاريخ الصيدليات</small></button>
+</div>
+<label class="alt" style="display:inline-block;border:2px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;background:var(--card)"><input type="file" accept="audio/*" id="qf" hidden>📖 شغّل تلاوة من جهازك</label><button class="alt" onclick="book()" style="margin-bottom:10px">📚 كراسة المذاكرة: كل الحالات</button><p>🏆 أفضل نتيجة: <b id="best">0</b></p>
+<p class="hint">لعبة محاكاة ترفيهية وتعليمية. الأسماء والأسعار للعب فقط، وهي مش بديل عن الممارسة المهنية أو التحقق من الروشتات الحقيقية.</p>
+</div>
+<div id="game" hidden>
+<div id="hud"><span id="hs"></span><span><button class="alt" id="qb" hidden onclick="QA&&(QA.paused?QA.play():QA.pause())">📖</button> <button class="alt" onclick="mute=!mute;this.textContent=mute?'🔇':'🔊'">🔊</button></span></div>
+<div id="scene">
+<div class="sign"><img class="dri" src="" style="width:26px;height:26px;border-radius:50%;object-fit:cover;vertical-align:middle;border:2px solid #fff"> ⚕️ صيدلية دكتور سيد إسماعيل · ٢٤ ساعة</div>
+<div id="shelves"></div>
+<div id="cnt"><div id="pt"><div id="face">🙂</div><div id="nm"></div><div id="pat"><i></i></div></div>
+<div><div id="bub"></div><div class="cr"><div id="rx" onclick="rxo()">📄<br>الروشتة<br><small>اضغط للفحص</small></div><div id="bag"><b>🛍️ كيس المريض</b><ul id="bl"></ul></div></div></div></div>
+<div id="dk"></div><div id="toast"></div>
+</div>
+<div id="ev"></div><div id="pan"></div><div id="mini"><span>🛍️ الكيس <b id="mc">0</b> · اسحب العلبة هنا</span><button onclick="go()">✅ جهّز الطلب</button></div>
+</div>
+<div id="end" class="screen" hidden></div>
+<div id="md"><div id="mb"></div></div>
+<script>
+const $=s=>document.querySelector(s),sh=a=>[...a].sort(()=>Math.random()-.5);
+const DR='data:image/jpeg;base64,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';
+let AC,mute=0,S,cur,drag,md=0;
+const SN={},SD={bell:[[1320,.5,'p',0,.5],[990,.7,'p',.2,.5]],ok:[[660,.12,'p',0,.5],[880,.2,'p',.1,.5]],no:[[150,.3,'s',0,.35]],ka:[[1800,.05,'q',0,.2],[1200,.1,'q',.07,.2]],pr:[0,1,2,3,4].map(i=>[300+i*40,.05,'q',i*.06,.15]),ring:[0,1,2].flatMap(i=>[[1000,.1,'q',i*.25,.15],[1200,.1,'q',i*.25+.12,.15]])};
+function mk(N){const sr=11025,L=Math.ceil(Math.max(...N.map(n=>n[3]+n[1]))*sr),P=new Int16Array(L);N.forEach(([f,d,t,s,v])=>{const o=Math.floor(s*sr),n=Math.floor(d*sr);for(let i=0;i<n&&o+i<L;i++){const ph=(f*i/sr)%1,w=t=='q'?(ph<.5?1:-1):t=='s'?2*ph-1:Math.sin(6.2832*ph);P[o+i]+=w*v*20000*Math.exp(-5*i/n)}});
+const B=new ArrayBuffer(44+L*2),V=new DataView(B),W=(o,s)=>[...s].forEach((c,i)=>V.setUint8(o+i,c.charCodeAt(0)));W(0,'RIFF');V.setUint32(4,36+L*2,true);W(8,'WAVEfmt ');V.setUint32(16,16,true);V.setUint16(20,1,true);V.setUint16(22,1,true);V.setUint32(24,sr,true);V.setUint32(28,sr*2,true);V.setUint16(32,2,true);V.setUint16(34,16,true);W(36,'data');V.setUint32(40,L*2,true);new Int16Array(B,44).set(P);
+let s='';new Uint8Array(B).forEach(c=>s+=String.fromCharCode(c));return new Audio('data:audio/wav;base64,'+btoa(s))}
+function snd(k){if(mute)return;try{const a=SN[k]||(SN[k]=mk(SD[k]));a.currentTime=0;const r=a.play();if(r&&r.catch)r.catch(()=>{})}catch(e){}}
+const bell=()=>snd('bell'),ok=()=>snd('ok'),no=()=>snd('no'),ka=()=>snd('ka'),pr=()=>snd('pr'),ring=()=>snd('ring');
+addEventListener('pointerdown',()=>{Object.keys(SD).forEach(k=>{if(!SN[k]){SN[k]=mk(SD[k]);SN[k].load()}})},{once:true});
+// id, brand, generic, strength, form, class, price, expiry, warning, shelf, color
+const K=[
+['panadol','Panadol','Paracetamol','500 mg','أقراص','مسكن وخافض حرارة',35,'09/2027','ماتزودش عن الجرعة اليومية المقررة',0,'#e85d5d'],
+['panadol2','Panadol','Paracetamol','500 mg','أقراص','مسكن وخافض حرارة',35,'03/2025','ماتزودش عن الجرعة اليومية المقررة',0,'#e85d5d'],
+['abimol','Abimol','Paracetamol','500 mg','أقراص','مسكن وخافض حرارة',18,'11/2027','نفس مادة بانادول، ماتجمعش بينهم',0,'#f08a5d'],
+['brufen','Brufen','Ibuprofen','400 mg','أقراص','مضاد التهاب لاستيرويدي',42,'06/2027','يُؤخذ بعد الأكل، وحذر مع الضغط والمعدة',0,'#d94f70'],
+['cataflam','Cataflam','Diclofenac potassium','50 mg','أقراص','مضاد التهاب لاستيرويدي',55,'10/2027','حذر مع المعدة والقلب',0,'#c0392b'],
+['declophen','Declophen','Diclofenac','50 mg','أقراص','مضاد التهاب لاستيرويدي',38,'08/2027','حذر مع المعدة والقلب',0,'#b5651d'],
+['augmentin','Augmentin','Amoxicillin + Clavulanate','1 g','أقراص','مضاد حيوي بنسلين',120,'05/2027','ممنوع لمن عنده حساسية بنسلين',1,'#3b82c4'],
+['antinal','Antinal','Nifuroxazide','200 mg','كبسولات','مضاد للإسهال المعوي',28,'08/2027','اشرب سوائل كتير',1,'#f39c12'],
+['claritine','Claritine','Loratadine','10 mg','أقراص','مضاد هيستامين',45,'12/2027','نعاس خفيف عند بعض الناس',1,'#27ae60'],
+['concor','Concor','Bisoprolol','5 mg','أقراص','علاج قلب وضغط',60,'07/2027','يُصرف بروشتة سارية فقط',2,'#8e44ad'],
+['glucophage','Glucophage','Metformin','500 mg','أقراص','علاج سكر',50,'04/2027','يُصرف بروشتة سارية فقط',2,'#16a085'],
+['cebion','Cebion','Vitamin C','1000 mg','فوار','فيتامينات',40,'01/2028','اقرأ النشرة قبل الاستعمال',2,'#f1c40f'],
+['flagyl','Flagyl','Metronidazole','500 mg','أقراص','مضاد حيوي',30,'10/2027','ممنوع الكحول أثناء العلاج، وبروشتة فقط',1,'#2e86c1'],
+['zithromax','Zithromax','Azithromycin','500 mg','أقراص','مضاد حيوي',95,'06/2027','مضاد حيوي بروشتة فقط',1,'#1f618d'],
+['gaviscon','Gaviscon','Sodium alginate + antacid','—','شراب','حموضة وارتجاع',65,'09/2027','لو الأعراض مستمرة راجع الدكتور',1,'#e67e22'],
+['ors','ORS','Oral rehydration salts','—','أكياس','تعويض سوائل وأملاح',12,'03/2028','يُذاب حسب التعليمات على العبوة',1,'#48c9b0'],
+['zyrtec','Zyrtec','Cetirizine','10 mg','أقراص','مضاد هيستامين',48,'11/2027','قد يسبب نعاس',1,'#52be80'],
+['buscopan','Buscopan','Hyoscine butylbromide','10 mg','أقراص','مضاد تقلصات',32,'05/2027','حذر مع الجلوكوما وتضخم البروستاتا',1,'#f5b041'],
+['norvasc','Norvasc','Amlodipine','5 mg','أقراص','علاج ضغط',70,'08/2027','يُصرف بروشتة سارية فقط',2,'#7d3c98'],
+['lipitor','Lipitor','Atorvastatin','20 mg','أقراص','خافض كوليسترول',110,'09/2027','يُصرف بروشتة سارية فقط',2,'#2471a3'],
+['strepsils','Strepsils','Amylmetacresol + dichlorobenzyl alcohol','—','أقراص مص','التهاب حلق',40,'01/2028','لو الأعراض فوق ٣ أيام راجع دكتور',2,'#ec7063'],
+['otrivin','Otrivin','Xylometazoline','0.1 %','نقط أنف','مزيل احتقان',38,'12/2027','لفترة قصيرة فقط، ٥ أيام بحد أقصى',2,'#5dade2'],
+['bepanthen','Bepanthen','Dexpanthenol','5 %','كريم','عناية بالبشرة',85,'02/2028','للاستعمال الخارجي',2,'#e84393'],
+['congestal','Congestal','Paracetamol + Chlorpheniramine + Pseudoephedrine','—','أقراص','أعراض الزكام والبرد',32,'10/2027','حذر مع الضغط العالي والقلب والسكر',1,'#af7ac5'],
+['mucosolvan','Mucosolvan','Ambroxol','15 mg/5 ml','شراب','مقشّع للبلغم',45,'09/2027','اشرب سوائل كتير، ولو الكحة طولت راجع دكتور',1,'#45b39d'],
+['duphalac','Duphalac','Lactulose','—','شراب','ملين',55,'11/2027','لفترة قصيرة مع سوائل وألياف',1,'#a9cce3'],
+['voltarengel','Voltaren Emulgel','Diclofenac gel','1 %','جل','مسكن موضعي',75,'08/2027','على الجلد السليم فقط',0,'#a04000'],
+['betadine','Betadine','Povidone-iodine','10 %','محلول','مطهر للجروح',30,'12/2027','للاستعمال الخارجي فقط',2,'#935116'],
+['canesten','Canesten','Clotrimazole','1 %','كريم','مضاد فطريات',68,'07/2027','كمّل المدة المحددة',2,'#2874a6'],
+['fenistil','Fenistil','Dimetindene','0.1 %','جل','مضاد هيستامين موضعي',58,'10/2027','للاستعمال الخارجي',2,'#58d68d'],
+['systane','Systane','Lubricant eye drops','—','نقط عين','ترطيب العين',120,'03/2028','اقفل العبوة بعد الاستعمال',2,'#85c1e9']];
+const D={};K.forEach(a=>D[a[0]]={id:a[0],b:a[1],g:a[2],s:a[3],f:a[4],c:a[5],p:a[6],e:a[7],w:a[8],r:a[9],col:a[10]});
+const old=d=>{const[m,y]=d.e.split('/'),n=new Date();return +y*12+ +m<n.getFullYear()*12+n.getMonth()+1};
+const C=[
+{n:'أبو الروشتة',e:'👴',say:'اتفضل يا دكتور، الدكتور كاتبلي دول 📄',need:[['panadol'],['claritine'],['augmentin']],rx:{d:'11/2026',l:['Panadol 500 mg','Claritine 10 mg','Aug▒▒▒ 1 g'],u:2,t:'Augmentin 1 g',tid:'augmentin'}},
+{n:'بتاع الشطارة',e:'🤑',say:'بص يا دكتور، عايز علبة بانادول من غير ما تدفعني كتير!',need:[['panadol','abimol']],dlg:[{q:'ما تعملنا خصم كده يا دكتور، إحنا زباينك! 😤',ch:[['خصم ١٠٪ علشان العشرة 😄',1,'ربنا يخليك يا دكتور!',10],['أسعارنا ثابتة، بس في بديل بنفس المادة الفعالة وأرخص 👌',2,'ماشي، كلامك معقول!'],['خد الحاجة بنص الثمن وسيبني في حالي!',0,'إيه الجدعنة دي! بس الصيدلية هتقفل 😂',50]]}]},
+{n:'أبو سؤال',e:'🧐',say:'عايز Brufen 400 يا دكتور… وعندي كام سؤال صغير 😅',need:[['brufen']],dlg:[
+{q:'طب هو الدوا ده بيتاخد قبل الأكل ولا بعده؟',ch:[['بعد الأكل، علشان يخفف التهيج على المعدة',2,'تمام، كده واضح!'],['قبل الأكل على لحم بطنك',0,'والمعدة تقول إيه؟! 😬']]},
+{q:'طب ينفع مع الضغط؟',ch:[['ينفع على طول من غير قلق',0,'ده أنا باخد علاج ضغط! 😰'],['ممكن يأثر على الضغط ويتعارض مع بعض أدويته، استشير دكتورك الأول',2,'يا سلام عليك يا دكتور!']]},
+{q:'طب ينفع آخده مع الدوا اللي باخده من خمس سنين؟',ch:[['قولي اسمه وأراجع التداخل، مش هقولك ينفع بالتخمين',2,'الله ينور! ده اسمه…'],['أكيد ينفع، كل الأدوية صحاب',0,'صحاب؟! ده انت داخل على كارثة 😂']]}]},
+{n:'بتاع البديل',e:'🧔',say:'عايز Cataflam 50… لا استنى، عايز نفس المادة الفعالة بس من شركة تانية!',need:[['declophen']],dlg:[{q:'لا لا يا دكتور، أنا عايز نفس العلبة اللي الدكتور كتبها! 😤',ch:[['المادة الفعالة هي ديكلوفيناك ٥٠ في الاتنين، والعلبة مجرد اسم تجاري مختلف',2,'ماشي… طالما نفس المادة هاخده'],['مفيش غير ده، خد أو سيب!',0,'طب بلاش أسلوبك ده يا دكتور 😒']]}]},
+{n:'آخر الشهر',e:'😅',say:'معايا ٥٠ جنيه بس يا دكتور، عندي صداع، ظبطني!',budget:50,need:[['panadol','abimol']]},
+{n:'مريض الحساسية',e:'🤧',say:'دي روشتة الدكتور… بس أنا عندي حساسية من البنسلين يا دكتور.',need:[],refuse:'allergy',rx:{d:'11/2026',l:['Augmentin 1 g']}},
+{n:'الروشتة القديمة',e:'📜',say:'أنا باخد العلاج ده من زمان، هاتهولي زي كل مرة.',need:[],refuse:'old',rx:{d:'03/2023',l:['Concor 5 mg']}},
+{n:'كحة وسخونية',e:'🤒',say:'عندي كحة وسخونية خفيفة من يومين يا دكتور… هاتلي مضاد حيوي!',abx:1,need:[['strepsils']],dlg:[{q:'أنا عايز مضاد حيوي، الكحة مش بتروح!',ch:[['المضاد الحيوي بروشتة، ومعظم الكحة والرشح فيروسية ومش بتتعالج بيه. هديك حاجة تريّح الحلق، ولو السخونية زادت أو طولت راجع دكتور',2,'كلامك منطقي، هجرب وأراقب.'],['خد Augmentin وماتقولش لحد',0,'ده أنا هبقى عامل مقاومة للمضادات! 😬']]}]},
+{n:'حموضة',e:'😖',say:'معدتي بتحرقني بعد الأكل يا دكتور، عايز حاجة تريّحني.',need:[['gaviscon']],dlg:[{q:'تنصحني بإيه غير الدوا يا دكتور؟',ch:[['بلاش تنام بعد الأكل على طول، قلل الدسم والمنبهات، ولو الحرقان بيتكرر أو معاه وجع شديد راجع دكتور',2,'كلام معقول، هجرب!'],['كل براحتك والدوا هيظبط كل حاجة',0,'ده أنا بحرق نفسي بالمقلي كل يوم 😅']]}]},
+{n:'مغص وإسهال',e:'🤢',say:'عندي إسهال من إمبارح يا دكتور، هلكان!',need:[['ors'],['antinal']],dlg:[{q:'إيه أهم حاجة أعملها؟',ch:[['أهم حاجة تعويض السوائل والأملاح. ولو في دم في البراز أو سخونية عالية أو الإسهال طوّل، لازم دكتور',2,'تمام، هشرب سوائل وأروّح لو زاد!'],['ماتشربش مية خالص عشان ما يزودش',0,'ده أنا هجفّ كده! 😰']]}]}];
+C.push(
+{n:'صداع ومعدة',e:'🤕',say:'والله يا دكتور عندي صداع من الشغل والسهر، وعندي قرحة في المعدة من زمان. المفروض آخد إيه؟',need:[['panadol','abimol']],nsaid:1,dlg:[{q:'ينفع آخد Brufen أو Cataflam زي ما صحابي بيقولوا؟',ch:[['لا، دي بتهيّج المعدة وممكن تضر القرحة. الباراسيتامول أنسب، ولو الصداع بيتكرر راجع دكتور',2,'تمام يا دكتور، شكرًا إنك نبهتني!'],['آه عادي، كلها مسكنات',0,'ده أنا هروح المستشفى بالمقلب ده! 😰']]}]},
+{n:'زكام',e:'🥴',say:'مناخيري مسدودة وحلقي بيوجعني من يومين يا دكتور، هاتلي حاجة تريّحني.',need:[['otrivin'],['strepsils']],dlg:[{q:'ينفع أستخدم قطرة الأنف كل يوم لحد ما أخف؟',ch:[['لا، لفترة قصيرة بس (٥ أيام بحد أقصى) وإلا الاحتقان يرجع أسوأ',2,'تمام، هلتزم بالمدة.'],['أكيد، كل ما تحتاجها استخدمها',0,'وبعدين مناخيري هتتعود عليها! 😬']]}]},
+{n:'حساسية موسمية',e:'😤',say:'عطس وحكة في العين والأنف، وأنا سواق ميكروباص يا دكتور!',need:[['claritine','zyrtec']],dlg:[{q:'هيخليني أنام وأنا سايق؟',ch:[['ممكن يسبب نعاس عند بعض الناس، خصوصًا Zyrtec. جرّبه الأول وانت مش سايق، واحذر لو حسيت بنعاس',2,'ماشي، هجربه الأول في البيت.'],['لا مفيش نعاس خالص أبدًا',0,'وأنا هنام على الطريق؟! 😱']]}]},
+{n:'طفح الحفاض',e:'👩',say:'ابني عنده احمرار من الحفاض يا دكتور، عايزة حاجة تهدّي الجلد.',need:[['bepanthen']],dlg:[{q:'أعمل إيه تاني؟ وأروح للدكتور إمتى؟',ch:[['غيّري الحفاض كتير ونشّفي الجلد، وراجعي دكتور لو في صديد أو حمى أو الاحمرار مبيتحسنش',2,'كلام مفهوم يا دكتور، شكرًا!'],['حطي أي كريم واتجاهلي الموضوع',0,'يا دكتور ده ابني مش تجربة! 😠']]}]});
+C.push(
+{n:'ألم الدورة',e:'😣',say:'عندي ألم شديد في الدورة كل شهر يا دكتور، إيه المناسب؟',need:[['brufen','buscopan']],dlg:[{q:'آخده على معدة فاضية؟ وأروح للدكتورة إمتى؟',ch:[['بعد الأكل. ولو الألم شديد أو مختلف عن المعتاد أو معاه نزيف زيادة، راجعي دكتورة نسا',2,'تمام، هراجع لو زاد.'],['على معدة فاضية عشان يشتغل أسرع، ومفيش داعي للدكتورة',0,'ده أنا هتعب من الاتنين! 😅']]}]},
+{n:'شد عضلي',e:'🏋️',say:'شديت عضلة رجلي في الجيم يا دكتور، عايز حاجة أحطها عليها.',need:[['voltarengel']],dlg:[{q:'أحطه على الجرح اللي في رجلي كمان؟',ch:[['لا، على الجلد السليم فقط وبطبقة رقيقة، والجرح له مطهر مناسب',2,'تمام يا دكتور، فهمت!'],['حطه على أي حتة، ده كله بيهدّي',0,'يا دكتور الجرح بيحرق! 😖']]}]},
+{n:'إمساك',e:'😩',say:'عندي إمساك من أيام يا دكتور، أعمل إيه؟',need:[['duphalac']],dlg:[{q:'أستخدمه على طول لو اتعودت؟',ch:[['لفترة قصيرة مع سوائل وألياف وحركة. ولو الإمساك مستمر أو معاه دم أو نزول وزن راجع دكتور',2,'كلام سليم، هغير أكلي.'],['أيوه استمر عليه سنين',0,'وأمعائي هتتكاسل كده! 😬']]}]},
+{n:'كحة بلغم',e:'😷',say:'عندي كحة فيها بلغم من أسبوع يا دكتور.',need:[['mucosolvan']],dlg:[{q:'ينفع آخد حاجة توقف الكحة خالص؟',ch:[['مع البلغم الأحسن مقشّع مش مثبّط، وسوائل كتير. لو دم أو ضيق نفس أو طولت أسبوعين راجع دكتور',2,'فاهم، هشرب مية كتير.'],['أكيد، كتم الكحة أحسن',0,'والبلغم هيروح فين؟! 😅']]}]},
+{n:'فطريات القدم',e:'🦶',say:'في حكة وتقشير بين صوابع رجلي يا دكتور.',need:[['canesten']],dlg:[{q:'أوقف الكريم أول ما الحكة تروح؟',ch:[['لا، كمّل المدة المكتوبة حتى بعد ما الأعراض تروح، ونشّف بين الصوابع وغيّر الشراب يوميًا',2,'تمام، هلتزم.'],['آه وقف أول ما تحس بتحسن',0,'وبعدين الفطريات ترجع! 😤']]}]},
+{n:'جرح صغير',e:'🩹',say:'اتعورت بسكينة المطبخ جرح صغير يا دكتور.',need:[['betadine']],dlg:[{q:'أحط المطهر وبس؟',ch:[['اغسله الأول بمية جارية، ولو الجرح عميق أو متسخ أو متطعمتش تيتانوس من فترة راجع دكتور',2,'مفيد جدًا يا دكتور!'],['حطه وخلاص من غير غسيل',0,'يعني الوساخة تفضل جوه؟! 😬']]}]},
+{n:'لدغة حشرة',e:'🦟',say:'ناموسة قرصتني ورجلي ورمت وبتحكني يا دكتور.',need:[['fenistil']],dlg:[{q:'أحك عليها لحد ما تروح؟',ch:[['لا، الحك بيزود الالتهاب. والجل يهدّي، ولو الوجه ورم أو في ضيق نفس اطلب طوارئ',2,'تمام، هبطل أحك.'],['احك براحتك',0,'ده أنا هبقى جرح! 😖']]}]},
+{n:'جفاف العين',e:'🥱',say:'عيني ناشفة وبتحرقني من الموبايل والكمبيوتر يا دكتور.',need:[['systane']],dlg:[{q:'أعمل إيه غير النقط؟',ch:[['كل ٢٠ دقيقة بص لبعيد ٢٠ ثانية وارمش كتير. واحمرار مع ألم أو ضعف نظر يحتاج دكتور',2,'قاعدة حلوة، هجربها!'],['كمّل شاشة من غير راحة',0,'ده أنا هعمى! 😱']]}]},
+{n:'زكام وضغط',e:'👨‍🦳',say:'عندي زكام وأنا مريض ضغط يا دكتور، هاتلي كونجستال.',need:[['panadol','abimol']],blk:[['congestal'],'كونجستال فيه سودوإيفيدرين وده ممكن يرفع الضغط، فمش مناسب لمريض ضغط من غير دكتور.'],dlg:[{q:'طب أعمل إيه لو مناخيري مسدودة؟',ch:[['محلول ملح للأنف وسوائل وراحة، وراجع دكتورك قبل أي مزيل احتقان',2,'تمام يا دكتور، شكرًا.'],['خد أي مزيل احتقان، كلهم زي بعض',0,'وضغطي هيطلع للسما! 😰']]}]},
+{n:'حامل وصداع',e:'🤰',say:'أنا حامل ومعايا صداع يا دكتور، أخد إيه؟',need:[['panadol','abimol']],blk:[['brufen','cataflam','declophen'],'مسكنات الالتهاب تتجنب في الحمل. الباراسيتامول هو الأنسب، وبعد استشارة دكتورها.'],dlg:[{q:'ينفع آخد أي مسكن؟',ch:[['لا، الباراسيتامول بس وبأقل جرعة مناسبة، ولازم أكلم دكتورك قبل أي دوا',2,'حاضر يا دكتور، هكلمها.'],['أيوه، كل المسكنات زي بعض',0,'وبعدين أنا والجنين؟! 😨']]}]});
+const MODES={n:{n:5,d:.9},r:{n:6,d:1.6},k:{n:8,d:2.2}};
+const LV=['Trainee Pharmacist · صيدلي متدرب','Junior Pharmacist · صيدلي مبتدئ','Community Pharmacist · صيدلي مجتمع','Senior Pharmacist · صيدلي أول','Pharmacy Legend · أسطورة الصيدلة 👑'];
+const EV=[['📞 التليفون بيرن والمريض واقف!','📞 رد على التليفون','رديت وخلصت المكالمة بسرعة 👌'],['🔌 الكهربا قطعت فجأة!','🔦 شغّل كشاف الموبايل','الكشاف نوّر المكان 💪',1],['🧒 طفل بيعبث بعلب الرف!','🧒 وقّفه بلطف','وقفته قبل ما الرف يقع 😅'],['🩺 مريض عايز يقيس الضغط دلوقتي!','🩺 قيس له الضغط','قست الضغط والنتيجة تمام ✅']];
+const WR=['يا دكتور إنت كده هتصرف للمريض علاج ولا هتعمله مفاجأة؟ 😂','الدوا ده مش في طلب المريض… ركّز يا دكتور!','المريض بيبص لك بنظرة “إنت متأكد؟” 😅'];
+try{$('#best').textContent=localStorage.ph_best||0}catch(e){}
+document.querySelectorAll('.dri').forEach(i=>i.src=DR);
+let QA;$('#qf').onchange=e=>{const f=e.target.files[0];if(!f)return;if(QA)QA.pause();QA=new Audio(URL.createObjectURL(f));QA.loop=true;QA.volume=.5;QA.onerror=()=>alert('المتصفح مش قادر يشغّل الملف هنا');QA.play().catch(()=>{});$('#qb').hidden=0};
+setTimeout(()=>$('#intro')&&$('#intro').remove(),3000);
+function M(h){md=1;$('#mb').innerHTML=h;$('#md').classList.add('on')}
+function X(){md=0;$('#md').classList.remove('on')}
+function toast(m,b){const t=$('#toast');t.textContent=m;t.className=b?'b on':'on';clearTimeout(toast.t);toast.t=setTimeout(()=>t.className='',3200)}
+function say(t){$('#bub').textContent=t}
+function pick5(n){let seen=[];try{seen=JSON.parse(localStorage.ph_seen||'[]')}catch(e){}
+let q=sh(C.filter(c=>!seen.includes(c.n))).slice(0,n);if(q.length<n){q=q.concat(sh(C.filter(c=>!q.includes(c))).slice(0,n-q.length));seen=[]}
+try{localStorage.ph_seen=JSON.stringify(seen.concat(q.map(c=>c.n)))}catch(e){}return q}
+function start(m){bell();S={m:MODES[m],score:0,rep:80,profit:0,i:0,served:0,rx:0,meds:0,err:0,safe:0,cashErr:0,sat:[],time:0,ph:'',q:pick5(MODES[m].n)};
+$('#menu').hidden=1;$('#end').hidden=1;$('#game').hidden=0;scrollTo(0,0);
+const RN=['مسكنات ومضادات التهاب','مضادات حيوية · معدة · حساسية','قلب · سكر · فيتامينات'];
+$('#shelves').innerHTML=RN.map((n,r)=>`<div class="shelf"><h4>${n}</h4><div class="row">${sh(K.filter(k=>k[9]==r)).map(k=>{const d=D[k[0]];return`<div class="box" data-id="${d.id}" style="--c:${d.col}"><b>${d.b}</b>${d.s}<br>${d.g.split(' ')[0]}<br>EXP ${d.e}</div>`}).join('')}</div></div>`).join('');
+setTimeout(nxt,600)}
+function nxt(){if(S.i>=S.q.length)return fin();cur=S.q[S.i];Object.assign(S,{bag:[],ph:'serve',v:0,pat:100,t0:Date.now(),disc:0,di:0,ev:0});
+const f=$('#face');f.className='';f.textContent=cur.e;$('#nm').textContent=cur.n;bell();setTimeout(()=>f.className='in',60);say(cur.say);
+$('#rx').style.display=cur.rx?'':'none';rb();acts();const id=S.i;if(Math.random()<.65)setTimeout(()=>ev(id),4000+Math.random()*9000);setTimeout(tip,900)}
+const TIP={'أبو الروشتة':'افحص الروشتة كويس. لو أي اسم دوا مش واضح، ماتخمّنش، اتصل بالدكتور اللي كتبها.','بتاع الشطارة':'الفصال مش مبرر تنزّل عن السعر من غير سبب. اعرض بديل بنفس المادة الفعالة بدل ما تخسر.','أبو سؤال':'جاوب بدقة: وقت الدوا مع الأكل، والتداخل مع أدوية المريض التانية. ولو مش متأكد اسأله عن اسم دواه.','بتاع البديل':'البديل هو نفس المادة الفعالة والتركيز حتى لو اسم الشركة مختلف. اشرحله بهدوء.','آخر الشهر':'مراعاة ميزانية المريض مش معناها تقلل جودة الاختيار. اختار دوا آمن وبسعر مناسب.','مريض الحساسية':'اسأل عن الحساسية دايمًا قبل أي مضاد حيوي. لو في تعارض ماتصرفش وارجع للدكتور.','الروشتة القديمة':'بصّ على تاريخ الروشتة. أدوية الروشتة لازم تكون سارية.','كحة وسخونية':'معظم الكحة والرشح فيروسية. المضاد الحيوي مش علاج ليها وبيتصرف بروشتة بس.','حموضة':'اسأل عن علامات الخطر زي وجع شديد أو قيء بدم، وانصح بعادات غذائية مناسبة.','مغص وإسهال':'أولوية الإسهال هي تعويض السوائل والأملاح. اتأكد من علامات الخطر.','صداع ومعدة':'اسأل عن أمراض المعدة قبل أي مسكن. مسكنات الالتهاب (زي بروفين وكاتافلام) ممكن تهيّج المعدة والقرحة، فالباراسيتامول هو الأنسب هنا.','زكام':'ركّز في الأعراض: احتقان الأنف وألم الحلق. قطرة الأنف بتتستخدم لفترة قصيرة بس.','حساسية موسمية':'اسأل لو المريض بيسوق أو شغله محتاج تركيز، لأن بعض مضادات الهيستامين ممكن تسبب نعاس.','طفح الحفاض':'مع الأطفال اسأل عن السن والأعراض، ولو في صديد أو حمى أو الاحمرار مش بيتحسن راجع الدكتور.'};
+Object.assign(TIP,{'ألم الدورة':'اسأل عن شدة الألم ومدته، وعن أي مشاكل في المعدة قبل المسكن.','شد عضلي':'اسأل عن مكان الإصابة، والشكل المناسب هنا جل موضعي على الجلد السليم.','إمساك':'ابدأ بالسؤال عن السوائل والألياف، واسأل عن علامات الخطر.','كحة بلغم':'فرّق بين كحة ناشفة وكحة ببلغم، وانتبه لمدة الكحة وعلامات الخطر.','فطريات القدم':'اشرح مدة العلاج وطرق الوقاية بجانب الكريم.','جرح صغير':'اسأل عن عمق الجرح ونظافته وتطعيم التيتانوس.','لدغة حشرة':'اسأل عن علامات الحساسية الشديدة قبل أي حاجة.','جفاف العين':'اسأل عن مدة الشاشة، وانتبه لعلامات تستدعي دكتور عيون.','زكام وضغط':'اسأل عن الأمراض المزمنة قبل أي دوا برد. بعض مزيلات الاحتقان بتأثر على الضغط.','حامل وصداع':'اسأل دايمًا: في حمل أو رضاعة؟ ده بيغيّر الاختيار.'});
+const PEARL={'أبو الروشتة':'الاسم مش واضح؟ اتصل بالدكتور ومتخمّنش · راجع التاريخ والتركيز','بتاع الشطارة':'الخصم مش بيتعمل غصب · اعرض بديل بنفس المادة الفعالة','أبو سؤال':'بروفين بعد الأكل · بيأثر على الضغط وبعض الأدوية · اسأل عن أدوية المريض قبل ما تقول ينفع','بتاع البديل':'نفس المادة الفعالة + نفس التركيز = بديل · اشرح الفرق بين الاسم التجاري والمادة الفعالة','آخر الشهر':'الأرخص مش دايمًا الأسوأ · باراسيتامول بسيط وآمن · الصداع المتكرر يحتاج دكتور','مريض الحساسية':'اسأل عن الحساسية قبل أي مضاد حيوي · أوجمنتين من عيلة البنسلين','الروشتة القديمة':'للروشتة مدة صلاحية · أدوية الروشتة لا تُصرف بدونها','كحة وسخونية':'أغلب الكحة والرشح فيروسي · المضاد الحيوي بروشتة فقط · سخونية طويلة = دكتور','حموضة':'قلل الدسم والمنبهات · ماتنامش بعد الأكل · وجع شديد أو قيء بدم = طوارئ','مغص وإسهال':'السوائل والأملاح أولًا · دم أو سخونية عالية أو إسهال طويل = دكتور','صداع ومعدة':'قرحة المعدة = تجنّب بروفين وكاتافلام · الباراسيتامول الأنسب','زكام':'قطرة الأنف ٥ أيام بحد أقصى · الحلق: أقراص مص وسوائل','حساسية موسمية':'مضادات الهيستامين ممكن تسبب نعاس · حذر عند السواقة','طفح الحفاض':'غيّر الحفاض كتير ونشّف الجلد · صديد أو حمى = دكتور','ألم الدورة':'بروفين بعد الأكل · ألم شديد أو غير معتاد = دكتورة نسا','شد عضلي':'الجل على الجلد السليم فقط وبطبقة رقيقة · راحة · ماتكترش جل ومسكنات فموية','إمساك':'سوائل وألياف وحركة أولًا · الملينات لفترة قصيرة · دم أو وزن نازل = دكتور','كحة بلغم':'كحة ببلغم = مقشّع مش مثبّط · سوائل · أسبوعين أو دم أو ضيق نفس = دكتور','فطريات القدم':'نشّف بين الصوابع · كمّل المدة حتى بعد الاختفاء · غيّر الشراب يوميًا','جرح صغير':'اغسل بمية جارية الأول · مطهر حوالين الجرح · عميق أو متسخ = تيتانوس ودكتور','لدغة حشرة':'جل مضاد هيستامين · ماتحكش · تورم الوجه أو ضيق نفس = طوارئ','جفاف العين':'نقط مرطبة · قاعدة ٢٠-٢٠-٢٠ للشاشة · احمرار مع ألم أو ضعف نظر = دكتور','زكام وضغط':'مزيلات الاحتقان (سودوإيفيدرين) تتجنب مع الضغط العالي · باراسيتامول وسوائل','حامل وصداع':'الباراسيتامول الأنسب · تجنّب مسكنات الالتهاب · دكتورها قبل أي دوا'};
+function book(){M(`<h3>📚 كراسة د. سيد إسماعيل</h3><ul style="padding:0 18px;line-height:1.7">${C.map(c=>`<li><b>${c.n}:</b> ${PEARL[c.n]||''}</li>`).join('')}</ul><button onclick="X()">إغلاق</button>`)}
+function tip(){if(!S||S.ph!='serve'||md||!TIP[cur.n])return;M(`<div style="display:flex;gap:10px;align-items:center"><img class="dri" src="${DR}" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid var(--g)"><b>د. سيد إسماعيل<br><small>ركّز قبل ما تصرف</small></b></div><p>${TIP[cur.n]}</p><button onclick="X()">تمام يا دكتور 👍</button>`)}
+function rb(){$('#mc').textContent=S.bag.length+'/'+cur.need.length;$('#bl').innerHTML=S.bag.map((id,i)=>`<li onclick="rm(${i})">${D[id].b} ${D[id].s} · ${D[id].p}ج</li>`).join('')||'<small>اسحب العلب هنا 👆</small>'}
+function rm(i){if(S.ph=='serve'){S.bag.splice(i,1);rb()}}
+function acts(){const p=$('#pan');$('#mini').classList.toggle('on',S.ph=='serve');
+if(S.ph=='serve')p.innerHTML=`<p class="hint">👆 اسحب العلب من الرف للكيس · اضغط على العلبة لقراءة بياناتها · اضغط على صنف في الكيس لتشيله · افحص الروشتة قبل أي حاجة</p><button onclick="go()">✅ جهّز الطلب</button><button class="red" onclick="rf()">🚫 رفض الصرف / مراجعة الدكتور</button>`;
+else if(S.ph=='dlg')dlg();else if(S.ph=='cash')cash()}
+// drag & drop
+const hit=e=>['#bag','#mini'].some(s=>{const r=$(s).getBoundingClientRect();return r.width>0&&e.clientX>r.left&&e.clientX<r.right&&e.clientY>r.top&&e.clientY<r.bottom});
+addEventListener('pointerdown',e=>{const b=e.target.closest('.box');if(b&&S&&S.ph=='serve'&&!md)drag={id:b.dataset.id,x:e.clientX,y:e.clientY,b}});
+addEventListener('pointermove',e=>{const r=$('#scene').getBoundingClientRect(),d=$('#dk');d.style.setProperty('--x',e.clientX-r.left+'px');d.style.setProperty('--y',e.clientY-r.top+'px');
+if(!drag)return;if(!drag.g&&Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>8){drag.g=drag.b.cloneNode(true);drag.g.className='box ghost';document.body.append(drag.g)}
+if(drag.g){drag.g.style.left=e.clientX-29+'px';drag.g.style.top=e.clientY-34+'px';{const o=hit(e);$('#bag').classList.toggle('over',o);$('#mini').classList.toggle('over',o)}}});
+addEventListener('pointerup',e=>{if(!drag)return;const d=drag;drag=0;$('#bag').classList.remove('over');$('#mini').classList.remove('over');if(d.g){d.g.remove();if(hit(e))add(d.id)}else info(d.id)});
+addEventListener('pointercancel',()=>{if(drag&&drag.g)drag.g.remove();drag=0});
+function info(id){const d=D[id];M(`<h3>${d.b} <small>${d.s}</small></h3><p>🧪 المادة الفعالة: <b>${d.g}</b><br>💊 الشكل: ${d.f}<br>🏷️ الفئة: ${d.c}<br>📅 الصلاحية: <b>${d.e}</b><br>⚠️ ${d.w}<br>💵 السعر: ${d.p} جنيه (تقريبي)</p><button onclick="add('${id}')">📥 حطه في الكيس</button> <button class="alt" onclick="X()">إغلاق</button>`)}
+function bad(m,s){no();S.err++;S.score-=s?10:3;if(s){S.safe++;S.rep-=5;M(`<h3>⛔ تنبيه سلامة المريض</h3><p>${m}</p><button onclick="X()">فهمت</button>`)}else toast(m,1)}
+const sum=()=>S.bag.reduce((a,i)=>a+D[i].p,0);
+function free(id){const u=new Set();S.bag.forEach(b=>{const k=cur.need.findIndex((o,j)=>!u.has(j)&&o.includes(b));if(k>=0)u.add(k)});return cur.need.findIndex((o,j)=>!u.has(j)&&o.includes(id))}
+function add(id){X();if(S.ph!='serve')return;const it=D[id];
+if(old(it))return bad(`العلبة دي منتهية الصلاحية (${it.e})! مينفعش تتصرف للمريض أبدًا، اتأكد من التاريخ دايمًا.`,1);
+if(cur.refuse=='allergy'&&id=='augmentin')return bad('المريض قالك عنده حساسية من البنسلين، وAugmentin من عيلة البنسلين! الصرف ممنوع، رجّع الروشتة للدكتور.',1);
+if(cur.refuse=='old')return bad('الروشتة دي من 2023! لازم روشتة سارية. ارفض الصرف واطلب روشتة جديدة.',1);
+if(cur.blk&&cur.blk[0].includes(id))return bad(cur.blk[1],1);
+if(cur.nsaid&&['brufen','cataflam','declophen'].includes(id))return bad('المريض عنده قرحة في المعدة! مسكنات الالتهاب زي Brufen وCataflam ممكن تهيّج المعدة وتضر القرحة. الباراسيتامول هو الأنسب.',1);
+if(cur.abx&&['augmentin','zithromax','flagyl'].includes(id))return bad('المضادات الحيوية بتتصرف بروشتة بس، والكحة والسخونية الخفيفة غالبًا فيروسية. استخدام مضاد حيوي بدون داعي بيزوّد المقاومة للمضادات.',1);
+if(cur.rx&&cur.rx.tid==id&&!S.v)return bad('الخط مش واضح! ممنوع تخمّن اسم الدوا، اتصل بالدكتور وتأكد الأول.',1);
+if(cur.budget&&sum()+it.p>cur.budget)return toast(`ده فوق ميزانية المريض (${cur.budget} جنيه). دوّر على بديل أرخص بنفس الفايدة 😅`,1);
+if(free(id)<0)return bad(WR[Math.random()*3|0],0);
+S.bag.push(id);ok();rb()}
+function rxo(z){z=z||1.6;const r=cur.rx;M(`<h3>📄 الروشتة</h3><div class="pz"><div class="paper" style="--z:${z}"><b>Date: ${r.d}</b>${r.l.map((l,i)=>`<div class="ln ${i===r.u?'u':''} ${S.v&&i===r.u?'ok':''}">${S.v&&i===r.u?r.t:l}</div>`).join('')}</div></div><input type="range" min="1" max="3" step=".1" value="${z}" style="width:100%" oninput="this.previousElementSibling.firstChild.style.setProperty('--z',this.value)"><p class="hint">🔍 كبّر وحرّك الروشتة، وراجع التاريخ والأسماء والتركيزات</p>${r.u!=null&&!S.v?'<button onclick="dr()">📞 اتصل بالدكتور</button> ':''}<button class="alt" onclick="X()">إغلاق</button>`)}
+function dr(){S.v=1;S.score+=10;ok();rxo();toast('الدكتور رد: السطر التالت Augmentin 1 g ✅')}
+function go(){if(cur.refuse)return toast('الروشتة دي فيها مشكلة، متجهزش حاجة! دوّر على السبب وارفض الصرف 🚨',1);
+const m=cur.need.length-S.bag.length;if(m>0)return toast(`لسه ناقص ${m} صنف يا دكتور!`,1);S.ph=cur.dlg?'dlg':'cash';acts()}
+function rf(){const r=cur.refuse;if(r){S.score+=30;S.rx++;S.served++;S.sat.push(Math.round(S.pat));ok();leave(r=='allergy'?'ماشي، هكلم الدكتور يغيّر العلاج. شكرًا إنك نبهتني! 🙏':'عندك حق، هروح أجيب روشتة جديدة. شكراً! 👍','✅ قرار ممتاز: ما صرفتش دوا غير آمن.')}
+else{S.score-=15;S.err++;S.rep-=5;S.sat.push(20);no();leave('أنا كنت عايز علاج عادي! هروح صيدلية تانية 😒','الراجل كان طلبه سليم… مترفضش من غير سبب.')}}
+function dlg(){const q=cur.dlg[S.di];say(q.q);$('#pan').innerHTML=`<div class="h">💬 ردّ على المريض:</div><div class="ch">${sh(q.ch.map((c,i)=>i)).map(i=>`<button class="alt" onclick="pick(${i})">${q.ch[i][0]}</button>`).join('')}</div>`}
+function pick(i){const c=cur.dlg[S.di].ch[i],g=c[1];say(c[2]);S.score+=g==2?15:g?5:-8;if(!g){S.rep-=3;S.pat-=15;S.err++;no()}else ok();if(c[3])S.disc=c[3];S.di++;$('#pan').innerHTML='';setTimeout(()=>{if(S.ph!='dlg')return;if(S.di<cur.dlg.length)dlg();else{S.ph='cash';acts()}},1300)}
+function cash(){S.tot=Math.round(sum()*(100-S.disc)/100);S.cs=1;S.inp='';S.pay=[50,100,200,500].find(b=>b>=S.tot)||S.tot;pk()}
+function pk(){const c=S.cs;$('#pan').innerHTML=`<div class="h">🖥️ الكاشير</div><div class="rc">${S.bag.map(i=>`<div>${D[i].b} ${D[i].s}<b>${D[i].p}</b></div>`).join('')}${S.disc?`<div>خصم ${S.disc}٪<b>-${sum()-S.tot}</b></div>`:''}</div>`+(c<3?`<p>${c==1?'اكتب إجمالي الفاتورة (جنيه):':`المريض مدّاك ${S.pay} جنيه 💵 اكتب الباقي:`}</p><div class="scr">${S.inp||'0'}</div><div class="kp">${[1,2,3,4,5,6,7,8,9,'⌫',0,'✔'].map(k=>`<button class="alt" onclick="kp('${k}')">${k}</button>`).join('')}</div>`:`<p>💵 الدرج اتفتح وإديت الفكة ✅</p><button onclick="fin2()">🧾 اطبع الفاتورة وخلّص</button>`)}
+function kp(k){if(k=='⌫')S.inp=S.inp.slice(0,-1);else if(k=='✔'){const n=+S.inp;
+if(S.cs==1){if(n!=S.tot)return cerr();ka();say(S.pay==S.tot?'اتفضل الحساب بالظبط 👌':`اتفضل ${S.pay} جنيه… معاك فكة يا دكتور؟`);S.cs=S.pay==S.tot?3:2}
+else{if(n!=S.pay-S.tot)return cerr();ka();S.cs=3}S.inp=''}else if(S.inp.length<4)S.inp+=k;pk()}
+function cerr(){no();S.cashErr++;S.score-=3;S.inp='';toast('الحساب غلط! المريض بيعد معاك 🧐',1);pk()}
+function fin2(){pr();S.score+=20+Math.round(S.pat/5);S.rx+=cur.rx?1:0;S.meds+=S.bag.length;S.served++;S.sat.push(Math.max(0,Math.round(S.pat)));S.profit+=Math.round(S.tot*.3);S.rep=Math.min(100,S.rep+3);S.time+=(Date.now()-S.t0)/1000;leave('شكرًا يا دكتور، تسلم إيدك! 🙏','🧾 الفاتورة اتطبعت. شيفت ماشي كويس!')}
+function leave(m,t){S.ph='lv';kill();$('#mini').classList.remove('on');say(m);$('#face').className='out';const p=PEARL[cur.n];$('#pan').innerHTML=`<p class="h">${t||''}</p>${p?`<div class="pl">📌 احفظ: ${p}</div>`:''}<button onclick="nx()">${S.i>=S.q.length-1?'📊 شوف النتيجة':'▶ المريض التالي'}</button>`;scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
+function nx(){if(S.ph!='lv')return;S.ph='';S.i++;nxt()}
+// random events
+function ev(id){if(!S||S.i!==id||S.ev||!['serve','dlg','cash'].includes(S.ph))return;const e=EV[Math.random()*4|0];S.ev=1;S.ee=e;ring();$('#ev').innerHTML=`<span>${e[0]}</span><button onclick="evd(1)">${e[1]}</button>`;$('#ev').style.display='flex';if(e[3])$('#dk').classList.add('on');S.evt=setTimeout(()=>evd(0),7000)}
+function kill(){clearTimeout(S.evt);S.ev=0;$('#ev').style.display='none';$('#dk').classList.remove('on')}
+function evd(w){kill();if(w){S.score+=8;S.rep=Math.min(100,S.rep+1);ok();toast(S.ee[2])}else{S.pat-=15;S.rep-=2;no();toast('اتأخرت والمريض بدأ يتنرفز 😬',1)}}
+setInterval(()=>{if(!S||!S.q)return;$('#hs').innerHTML=`<span>⭐ ${S.score}</span><span>❤️ ${Math.max(0,S.rep)}٪</span><span>👥 ${Math.min(S.i+1,S.q.length)}/${S.q.length}</span><span>💰 ${S.profit}</span>`;
+if(!['serve','dlg','cash'].includes(S.ph)||md)return;S.pat-=S.m.d*(cur.fast||1)*.25;const b=$('#pat i');b.style.width=Math.max(0,S.pat)+'%';b.style.background=S.pat<30?'var(--bad)':'var(--g)';
+if(S.pat<=0){S.rep-=8;S.err++;S.score-=10;S.sat.push(0);no();leave('أنا ماشي! ده إيه البطء ده! 😡','المريض مشي زعلان. حاول تكون أسرع من غير ما تتسرّع.')}},250);
+function fin(){S.ph='over';const n=S.q.length,avg=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):0,pct=Math.max(0,S.score)/(n*70);let L=pct<.25?0:pct<.45?1:pct<.65?2:pct<.85?3:4;if(S.safe)L=Math.min(L,2);
+try{if(S.score>(+localStorage.ph_best||0))localStorage.ph_best=S.score;$('#best').textContent=localStorage.ph_best}catch(e){}
+$('#game').hidden=1;$('#end').hidden=0;scrollTo(0,0);bell();
+$('#end').innerHTML=`<div class="big">${L>=3?'🏆':L>=2?'🎉':'😅'}</div><h1>خلصت الشيفت يا دكتور!</h1><p class="tag">${L>=2?'مبروك يا دكتور، عديت الشيفت من غير ما تفقد أعصابك!':'الروشتة دي محتاجة دكتور خط مش صيدلي! 😂'}</p><div class="st"><div>👥 المرضى<b>${S.served}/${n}</b></div><div>📄 الروشتات<b>${S.rx}</b></div><div>💊 الأدوية المصروفة<b>${S.meds}</b></div><div>❌ الأخطاء<b>${S.err}</b></div><div>⏱️ متوسط الوقت<b>${Math.round(S.time/Math.max(1,S.served))} ث</b></div><div>😊 رضا المرضى<b>${avg(S.sat)}٪</b></div><div>💰 الأرباح<b>${S.profit} ج</b></div><div>⭐ النقاط<b>${S.score}</b></div></div><p class="h">التقييم: ${LV[L]}</p>${S.safe?'<p class="hint">⚠️ حصلت '+S.safe+' مخالفة لسلامة المريض، والتقييم النهائي مقيّد بسببها. السلامة قبل السرعة دايمًا.</p>':''}${S.cashErr?`<p class="hint">أخطاء حساب في الكاشير: ${S.cashErr}</p>`:''}<div class="pl" style="text-align:right"><b>📚 كراسة الشيفت للمذاكرة</b><ul style="padding:0 18px;margin:4px 0">${S.q.map(c=>`<li><b>${c.n}:</b> ${PEARL[c.n]||''}</li>`).join('')}</ul></div><button onclick="start('n')">🔁 شيفت جديد</button> <button class="alt" onclick="$('#end').hidden=1;$('#menu').hidden=0">القائمة</button>`}
+</script>
+</body>
+</html>
